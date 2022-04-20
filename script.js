@@ -32,3 +32,20 @@
 //       isClose = true;
 
 // console.log(isChecked && isClose);
+
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+let lastFilm = prompt('Какой фильм вы недавно посмотрели?', '');
+let rateFilm = prompt('На сколько вы его оцените?', '');
+
+personalMovieDB.movies[lastFilm] = rateFilm;
+
+console.log(personalMovieDB);
