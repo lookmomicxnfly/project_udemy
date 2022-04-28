@@ -40,7 +40,17 @@
 
 
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
+
+start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -50,25 +60,94 @@ const personalMovieDB = {
     private: false
 };
 
-const a = prompt('Какой фильм вы недавно посмотрели?', '');
-const b = prompt('На сколько вы его оцените?', '');
 
-for (let i = 0; i < 2; i++) {
-    const a = prompt('Какой фильм вы недавно посмотрели?', ''),
-          b = prompt('На сколько вы его оцените?', '');
-
-    personalMovieDB.movies[a] = b;
-
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Какой фильм вы недавно посмотрели?', ''),
+              b = prompt('На сколько вы его оцените?', '');
+        
+        if (a !== 'null', b !== 'null' && a !== '', b !== '' && a.length < 50, b.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done!');
+        } else {
+            i--;
+            console.log('error');
+        }
+    }
 }
 
+rememberMyFilms();
+
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотрено мало фильмов');
+    } else if (personalMovieDB >= 10 && personalMovieDB < 30) {
+        console.log('Вы классический зритель');
+    } else if (personalMovieDB >= 30) {
+        console.log('Вы киноман');
+    } else {
+        console.log('Произошла ошибка');
+    }
+}
+
+detectPersonalLevel();
+
 console.log(personalMovieDB);
-// personalMovieDB.movies[lastFilm] = rateFilm;
 
 
 
 
+// const usdCurr = 28;
+
+// function convert(amount, curr) {
+//     console.log(curr * amount);
+// }
+
+// convert(500, usdCurr);
 
 
+// // Первая задача
+
+// function sayHello(name) {
+//     return('Привет, ' + name);
+// }
+
+// console.log(sayHello('Антон!'));
+
+// // Вторая задача
+
+// function returnNeighboringNumbers(num) {
+//     if (typeof(num) === 'number') {
+//         let arr = [];
+//         arr[0] = num - 1;
+//         arr[1] = num;
+//         arr[2] = num + 1;
+//         return arr;
+//     }
+// }
+
+// console.log(returnNeighboringNumbers(8));
+
+// // Третья задача
+
+// function getMathResult(base, baseTimes) {
+//     let result = '';
+//     if (typeof(baseTimes) !== 'number' || baseTimes <= 0) {
+//         return base;
+//     } else {
+//         for (let i = 1; i <= baseTimes; i++) {
+//             if (i == baseTimes) {
+//                 result += (base * i);
+//             } else {
+//                 result += (base * i) + '---';
+//             }
+//         }
+//         return result;
+//     }
+// }
+
+// console.log(getMathResult(3, 4));
 
 
 
@@ -190,3 +269,7 @@ console.log(personalMovieDB);
 // '    ***'
 // '   *****'
 // '  *******'
+
+
+
+
